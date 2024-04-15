@@ -7,7 +7,7 @@ async function storetask(req, res){
         req.body.description
 
     );
-    const query= "INSERT INTO db_tasks(title, description) VALUES(?,?)";
+    const query= "INSERT INTO tasks(title, description) VALUES(?,?)";
     connection.query(query, params, (err, results)=>{
         if (results){
             res
@@ -22,7 +22,8 @@ async function storetask(req, res){
                 .status(408)
                 .json({
                 success: false,
-                message: "Ops deu merda"
+                message: "Ops deu merda",
+                data: err
                 })
         }
     })
